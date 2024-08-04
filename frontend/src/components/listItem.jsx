@@ -1,89 +1,102 @@
-import { useRef, useState} from "react"
+import { useRef, useState, useEffect } from "react"
 import Plus from "../assets/plus"
 import Minus from "../assets/minus"
-export default function ListItem({content, heading}){
+export default function ListItem({ content, heading }) {
     let contentDivRef = useRef(null)
     let contentRef = useRef(null)
     const [active, setActive] = useState(false)
 
     const Styles = {
-        listItemDiv:{
-            display:"block",
-            borderRadius:"16px",
-            border:"1px solid white",
-            backgroundColor:"#171d25",
+        listItemDiv: {
+            //Sizing the whole component
+            width: "100%",
+            height: "11.5vh",
+            padding: "1em",
+            border: "1px solid #171d25",
+            backgroundColor: "white",
         },
-        listItemHeadingDiv:{
-            padding:"1em",
-            display:"flex",
-            justifyContent:"space-between",
+        listItemHeaderDiv: {
+            //Aligning header content
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+            height: "100%",
+
+        },
+        listItemHeading: {
+            fontSize: "0.85rem",
+            userSelect: "none",
+            color: "#171d25"
+        },
+        listItemHeadingButton: {
+            backgroundColor: "transparent",
+            fontSize: "1rem",
+            border: "none",
+            color: "#171d25"
+        },
+        listItemContentDiv: {
+            //Positioning
+                position: "absolute",
+                top: "0",
+                right: "0",
+            //Sizing
+                width: "70%",
+            //Color
+                backgroundColor: "#171d25",
+            //Border
+                border:"1px solid white",
+            //Accordion
+            maxHeight: "100%",
+            overflow: "hidden",
+            transition: "all 0.5s linear",
             
         },
-        listItemContent:{
-            backgroundColor:"white",
+        listItemContent: {
+            backgroundColor: "#171d25",
             fontSize: "0.85rem",
-            resize:"none",
-            width:"90%",
-            minHeight:"100%",
-            border:"none",
-            color:"#171d25",
-            marginTop:"1em",
-            marginBottom:"1em",
-        },
-        listItemHeadingButton:{
-            backgroundColor:"#171d25",
-            fontSize:"0.95rem",
-            boxShadow:"none",
-            border:"none",
-        },
-        listItemHeading:{
-            fontSize:"0.95rem",
-            userSelect:"none"
-        },
-        listItemContentDiv: { 
-            backgroundColor:"white",
-            maxHeight:"0px",
-            overflow:"hidden",
-            transition: "all 0.5s linear",
-            borderRadius:"16px",
-            textAlign:"center"
+            width: "100%",
+            color: "white",
+            margin: "1em",
         },
     }
 
 
 
-    function dropDown(){
-        const contentDiv = contentDivRef.current
-        const contentDivStyle = contentDiv.style
+    function dropDown() {
+        active ? setActive(false) : setActive(true)
+    }
 
-        if(contentDivStyle.maxHeight != "0px"){
-            contentDivStyle.maxHeight = "0px"
-            setActive(false)
-        } else {
-            contentDivStyle.maxHeight = max(200, contentRef.current.scrollHeight*1.1) + "px"
-            setActive(true)
+    useEffect(() => {
+        if(contentDivRef.current) {
+            if(contentDivRef.current.style.height){
+                contentDivRef.current.style.height = null
+            } else {
+                contentDivRef.current.style.height = contentDivRef.current.style.maxHeight
+            }
         }
 
-        contentDivStyle.height = contentDivStyle.maxHeight
-    }
+       
+    }, [active])
 
     return (
         <>
-            <div className="listItemDiv" style={Styles.listItemDiv}>
-                <div className="listItemHeadingDiv" style={Styles.listItemHeadingDiv}>
-                        <h3 className="listItemHeading" style={Styles.listItemHeading}>
-                            {heading.toUpperCase()}
-                        </h3>
-                        <button className = "listItemHeadingButton" style={Styles.listItemHeadingButton} onClick = {dropDown}>
-                            {!active ? <Plus/> : <Minus/>}
-                        </button>
-                    </div>
-                    <div className = "listItemContentDiv" ref = {contentDivRef} style={Styles.listItemContentDiv}>
-                        <textarea className = "listItemContent" ref = {contentRef} style={Styles.listItemContent} spellcheck = "false" disabled> 
-                            {content}
-                        </textarea>
-                    </div>
+            <div style={Styles.listItemDiv} onClick={dropDown}>
+                <div style={Styles.listItemHeaderDiv}>
+                    <h3 style={Styles.listItemHeading}>
+                        {heading.toUpperCase()}
+                    </h3>
+                    <button style={Styles.listItemHeadingButton}>
+                        {!active ? <Plus /> : <Minus />}
+                    </button>
                 </div>
+            </div>
+            {active &&
+                <div ref={contentDivRef} style={Styles.listItemContentDiv}>
+                    <textarea value={content} ref={contentRef} style={Styles.listItemContent} spellCheck={false} disabled />
+                </div>
+            }
+
         </>
     )
 }

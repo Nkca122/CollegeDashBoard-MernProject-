@@ -63,8 +63,7 @@ export default function ListItem({ content, heading }) {
             color: "white",
             fontSize: "0.9rem",
             width: "90%",
-            minHeight:"90%",
-            overflow:"auto"
+            minHeight:"100%",
         },
     }
 

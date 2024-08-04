@@ -50,22 +50,21 @@ export default function ListItem({ content, heading }) {
                 border:"1px solid white",
             //display
                 display:"flex",
-                justifyContent:"center",
+                justifyContent:"space-around",
                 alignItems:"center",
             //Accordion
             maxHeight: "0",
             overflow: "hidden",
-            transition: "height 5s linear",
-            
+            transition: "all 0.2s linear",
+            padding:"1em",
         },
         listItemContent: {
-            transition: "all 5s linear",
             backgroundColor: "#171d25",
-            fontSize: "0.85rem",
-            height: "50%",
-            width: "90%",
             color: "white",
-            margin: "1em",
+            fontSize: "0.9rem",
+            width: "90%",
+            minHeight:"90%",
+            overflow:"auto"
         },
     }
 
@@ -76,13 +75,7 @@ export default function ListItem({ content, heading }) {
     }
 
     useEffect(() => {
-        if(active) {
-                contentDivRef.current.style.height = "0px"
-        } else if(contentDivRef.current){
-            contentDivRef.current.style.maxHeight = "30vh"
-            contentDivRef.current.style.height = contentDivRef.current.style.maxHeight
-        }
-       
+       active ? contentDivRef.current.style.maxHeight = contentRef.current.scrollHeight + "px" : contentDivRef.current ? contentDivRef.current.style.maxHeight = null : null
     }, [active])
 
     return (
@@ -99,7 +92,7 @@ export default function ListItem({ content, heading }) {
             </div>
             {active &&
                 <div ref={contentDivRef} style={Styles.listItemContentDiv}>
-                    <textarea value={content} ref={contentRef} style={Styles.listItemContent} spellCheck={false} disabled />
+                        <textarea value = {content} style={Styles.listItemContent} spellCheck="false" disabled ref={contentRef}/>   
                 </div>
             }
 

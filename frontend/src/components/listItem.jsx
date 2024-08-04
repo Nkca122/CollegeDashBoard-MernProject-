@@ -36,26 +36,33 @@ export default function ListItem({ content, heading }) {
             color: "#171d25"
         },
         listItemContentDiv: {
+            transition: "height 5s linear",
             //Positioning
                 position: "absolute",
                 top: "0",
                 right: "0",
+                zIndex:"1",
             //Sizing
                 width: "70%",
             //Color
                 backgroundColor: "#171d25",
             //Border
                 border:"1px solid white",
+            //display
+                display:"flex",
+                justifyContent:"center",
+                alignItems:"center",
             //Accordion
             maxHeight: "100%",
             overflow: "hidden",
-            transition: "all 0.5s linear",
             
         },
         listItemContent: {
+            transition: "all 5s linear",
             backgroundColor: "#171d25",
             fontSize: "0.85rem",
-            width: "100%",
+            height: "50%",
+            width: "90%",
             color: "white",
             margin: "1em",
         },
@@ -68,14 +75,13 @@ export default function ListItem({ content, heading }) {
     }
 
     useEffect(() => {
-        if(contentDivRef.current) {
+        if(active) {
             if(contentDivRef.current.style.height){
                 contentDivRef.current.style.height = null
             } else {
                 contentDivRef.current.style.height = contentDivRef.current.style.maxHeight
-            }
         }
-
+        }
        
     }, [active])
 

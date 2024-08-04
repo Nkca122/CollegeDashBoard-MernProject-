@@ -53,7 +53,7 @@ export default function ListItem({ content, heading }) {
                 justifyContent:"center",
                 alignItems:"center",
             //Accordion
-            maxHeight: "100%",
+            maxHeight: "0",
             overflow: "hidden",
             
         },
@@ -76,10 +76,10 @@ export default function ListItem({ content, heading }) {
 
     useEffect(() => {
         if(active) {
-            if(contentDivRef.current.style.height){
-                contentDivRef.current.style.height = null
+            if(contentDivRef.current.style.height != "0px"){
+                contentDivRef.current.style.height = "0px"
             } else {
-                contentDivRef.current.style.height = contentDivRef.current.style.maxHeight
+                contentDivRef.current.style.maxHeight = "100%"
         }
         }
        

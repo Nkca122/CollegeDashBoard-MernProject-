@@ -69,6 +69,8 @@ body {
 textarea {
   border: none;
   resize: none;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 

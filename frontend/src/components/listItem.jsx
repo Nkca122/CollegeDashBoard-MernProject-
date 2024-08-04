@@ -74,7 +74,13 @@ export default function ListItem({ content, heading }) {
     }
 
     useEffect(() => {
-       active ? contentDivRef.current.style.maxHeight = contentRef.current.scrollHeight + "px" : contentDivRef.current ? contentDivRef.current.style.maxHeight = null : null
+       active ? ()=>{
+            contentDivRef.current.style.maxHeight = contentDivRef.current.scrollHeight + "px"
+
+        }  
+        : ()=>{
+            contentDivRef.current ? contentDivRef.current.style.maxHeight = null : null
+        }
     }, [active])
 
     return (
@@ -91,7 +97,8 @@ export default function ListItem({ content, heading }) {
             </div>
             {active &&
                 <div ref={contentDivRef} style={Styles.listItemContentDiv}>
-                        <textarea value = {content} style={Styles.listItemContent} spellCheck="false" disabled ref={contentRef}/>   
+                        <textarea value = {content} style={Styles.listItemContent} spellCheck="false" ref={contentRef} disabled/>   
+
                 </div>
             }
 

@@ -1,0 +1,81 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #171d25;
+  background-image: linear-gradient(rgba(144, 149, 144, 0.1) .1em, transparent .1em), linear-gradient(90deg, rgba(144, 149, 144, 0.1).1em, transparent .1em);
+  background-size: 4em 4em;
+  background-repeat: repeat;
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  font-size: 16px;
+}
+
+@media (min-width:768px) {
+  body {
+      font-size: 18px;
+  }
+}
+@media (min-width:1024px) {
+  body {
+      font-size: 19px;
+  }
+}
+@media (min-width:1280px) {
+  body {
+      font-size: 20px;
+  }
+}
+
+.container{
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@media screen and (width < 800px){
+  .container{
+    flex-direction: column;
+  }
+}
+
+@media screen and (width > 800px){
+  .container{
+    flex-direction: row;
+  }
+}
+
+ul {
+  scroll-behavior: smooth;
+  scrollbar-color: rgba(255, 255, 255, 1) transparent;
+} 
+
+
+
+
+
+
+
+

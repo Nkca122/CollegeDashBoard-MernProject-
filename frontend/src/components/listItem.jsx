@@ -36,7 +36,7 @@ export default function ListItem({ content, heading }) {
             color: "#171d25"
         },
         listItemContentDiv: {
-            transition: "height 5s linear",
+
             //Positioning
                 position: "absolute",
                 top: "0",
@@ -55,6 +55,7 @@ export default function ListItem({ content, heading }) {
             //Accordion
             maxHeight: "0",
             overflow: "hidden",
+            transition: "height 5s linear",
             
         },
         listItemContent: {
@@ -76,11 +77,10 @@ export default function ListItem({ content, heading }) {
 
     useEffect(() => {
         if(active) {
-            if(contentDivRef.current.style.height != "0px"){
                 contentDivRef.current.style.height = "0px"
-            } else {
-                contentDivRef.current.style.maxHeight = "100%"
-        }
+        } else if(contentDivRef.current){
+            contentDivRef.current.style.maxHeight = "30vh"
+            contentDivRef.current.style.height = contentDivRef.current.style.maxHeight
         }
        
     }, [active])

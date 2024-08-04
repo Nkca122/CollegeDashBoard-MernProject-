@@ -37,7 +37,8 @@ export default function ListItem({content, heading}){
             border:"none",
         },
         listItemHeading:{
-            fontSize:"0.95rem"
+            fontSize:"0.95rem",
+            userSelect:"none"
         },
         listItemContentDiv: { 
             backgroundColor:"white",
@@ -51,8 +52,7 @@ export default function ListItem({content, heading}){
 
 
 
-    function dropDownOpen(){
-
+    function dropDown(){
         const contentDiv = contentDivRef.current
         const contentDivStyle = contentDiv.style
 
@@ -70,11 +70,11 @@ export default function ListItem({content, heading}){
     return (
         <>
             <div className="listItemDiv" style={Styles.listItemDiv}>
-                <div className="listItemHeadingDiv" style={Styles.listItemHeadingDiv} onClick = {dropDownOpen}>
+                <div className="listItemHeadingDiv" style={Styles.listItemHeadingDiv}>
                         <h3 className="listItemHeading" style={Styles.listItemHeading}>
                             {heading.toUpperCase()}
                         </h3>
-                        <button className = "listItemHeadingButton" style={Styles.listItemHeadingButton}>
+                        <button className = "listItemHeadingButton" style={Styles.listItemHeadingButton} onClick = {dropDown}>
                             {!active ? <Plus/> : <Minus/>}
                         </button>
                     </div>

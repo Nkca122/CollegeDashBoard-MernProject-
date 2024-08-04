@@ -28,7 +28,7 @@ export default function List ({contentList = []}){
             maxHeight: "30vh",
             margin:"auto",
             backgroundColor:"transparent",
-            overflowY:"auto",
+            overflowY:"scroll",
             overflowX: "hidden",
             borderBottom: "1px solid white",
             borderTop: "1px solid white",
@@ -36,18 +36,17 @@ export default function List ({contentList = []}){
         },
         listHeading:{
             width:"100%",
-            fontWeight:"200",
+            fontWeight:"900",
             textAlign:"center",
             fontFamily:"Arial",
-            color:"white"
+            color:"white",
+            userSelect:"none"
         }
     }
 
     function initList(){
         const List = ListRef.current
         List.width = window.innerWidth > 800 ? window.innerWidth * 0.3 : window.innerWidth * 0.9
-
-
     }
 
     function mouseMoveHandler(e){
@@ -59,15 +58,17 @@ export default function List ({contentList = []}){
     }
 
     function mouseUpHandler(e){
-        window.removeEventListener('mousemove', mouseMoveHandler)
-        window.removeEventListener('mouseup', mouseUpHandler)
+        ListRef.current.removeEventListener('mousemove', mouseMoveHandler)
+        ListRef.current.removeEventListener('mouseup', mouseUpHandler)
 
         ListRef.current.style.cursor = "grab"
     }
 
     function mouseDownHandler(e){
-        window.addEventListener('mousemove', mouseMoveHandler)
-        window.addEventListener('mouseup', mouseUpHandler);
+
+        
+        ListRef.current.addEventListener('mousemove', mouseMoveHandler)
+        ListRef.current.addEventListener('mouseup', mouseUpHandler);
         pos = {
             left: ListRef.current.scrollLeft,
             top: ListRef.current.scrollTop,
@@ -102,17 +103,15 @@ export default function List ({contentList = []}){
 
     return (
         <>
-        <div style={{marginTop:"1em"}} >
-            <ul className="list" style = {Styles.list} ref={ListRef}>
-                <li key={"heading"} style={{listStyle: "none"}}><h3 className="listHeading" style={Styles.listHeading} ref={headingRef}><pre>&rarr; {"Notice Board"} &larr;</pre></h3></li>
+        <div style={Styles.list} ref={ListRef} onMouseDown={mouseDownHandler} onTouchHold={mouseDownHandler}>
+                <div key={"heading"} style={{listStyle: "none"}}><h3 className="listHeading" style={Styles.listHeading} ref={headingRef}><pre>{"Notice Board"}</pre></h3></div>
                 {contents && contents.map(
                     content => 
-                        <li className = "listItem" style = {Styles.listItem} key = {uuid()}>
+                        <div className = "listItem" style = {Styles.listItem} key = {uuid()}>
                                 <ListItem heading = {content[0]} content = {content[1]}/>
-                        </li>
+                        </div>
                             
                 )}
-            </ul>
         </div>
         </>
         

@@ -68,7 +68,7 @@ body {
 }
 
 ul {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   scrollbar-color: rgba(255, 255, 255, 1) transparent;
 } 
 

@@ -69,7 +69,7 @@ export default function Graph({graphData, xlabel = null, ylabel = null, minRequi
     
                 for(let i = 0; i < subjects.length; i++){
                     if(graphBarHeights[i] < subjects[i][1]){
-                        graphBarHeights[i] += 0.5;
+                        graphBarHeights[i] += 1;
                     } else {
                         graphBarHeights[i] = subjects[i][1];
                     }
@@ -172,11 +172,11 @@ export default function Graph({graphData, xlabel = null, ylabel = null, minRequi
 
     const Styles = {
         graphDiv:{
-            display: "flex",
             padding: "1em",
             borderRadius: "16px",
             border: "1px solid white",
-            backgroundColor:"#171d25"
+            backgroundColor:"#transparent",
+            width:"fit-content"
         },
         graphCanvas:{
             borderRadius: "0",

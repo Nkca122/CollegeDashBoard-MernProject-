@@ -50,7 +50,8 @@ export default function ListItem({ content, heading }) {
                 border:"1px solid white",
             //display
                 display:"flex",
-                justifyContent:"space-around",
+                flexDirection:"column",
+                justifyContent:"flex-start",
                 alignItems:"center",
             //Accordion
             overflow: "hidden",
@@ -58,14 +59,25 @@ export default function ListItem({ content, heading }) {
             padding:"1em",
             height:"30vh"
         },
+        listItemContentDivHeading:{
+            padding:"1em",
+            display:"flex",
+            justifyContent:"space-between",
+            alignItems:"center",
+            width:"90%",
+            border:"1px solid white"
+
+        },
         listItemContent: {
             backgroundColor: "#171d25",
             color: "white",
             fontSize: "0.9rem",
-            minHeight:"100%",
+            maxHeight:"90%",
             width: "90%",
             resize:"none",
-            overflow:"auto"
+            overflow:"auto",
+            border:"1px solid white",
+            padding:"1em"
         },
     }
 
@@ -97,12 +109,14 @@ export default function ListItem({ content, heading }) {
                 </div>
             </div>
             {active &&
+            <>
                 <div ref={contentDivRef} style={Styles.listItemContentDiv}>
-                        <textarea value = {content} style={Styles.listItemContent} spellCheck="false" ref={contentRef} disabled/>  
-
+                    <div style={Styles.listItemContentDivHeading}><button onClick={dropDown}>X</button></div>
+                    <textarea value = {content} style={Styles.listItemContent} spellCheck="false" ref={contentRef} disabled/>  
                 </div>
+            </>
             }
 
         </>
     )
-}
+ }

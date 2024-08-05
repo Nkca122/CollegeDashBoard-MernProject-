@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid'
 export default function List ({contentList = []}){
     const contents = JSON.parse(contentList).details;
     let pos = {top: 0, left: 0, x: 0, y: 0}
+    const ListRef = userRef(null)
 
     const [dimensions, setDimensions] = useState({
         width: null,
@@ -12,7 +13,7 @@ export default function List ({contentList = []}){
 
     const Styles = {
         list:{
-            width: "90vw",
+            width: window.innerWidth > 800 ? "50vw" : "90vw",
             margin:"auto",
             maxHeight : "30vh",
         },
@@ -36,13 +37,29 @@ export default function List ({contentList = []}){
         }
     }
 
+    function initList(){
+        ListRef.current.style.width = window.innerWidth > 800 ? "50vw" : "90vw";
+    }
+
+    function handleResize(){
+        setDimensions({
+            width: window.innerWidth,
+            height: window.innerHeight
+        })
+    }
+
+    // useEffect(()=>{
+    //     initList()
+    //         window.addEventListener("resize", handleResize);
+    //     return
+    // })
    
 
     
 
     return (
         <>
-        <div style={Styles.list}>
+        <div style={Styles.list} ref={ListRef}>
             <div style={Styles.listHeadingDiv}>
                 <h3 style={Styles.listHeading}><pre>{"Notice Board"}</pre></h3>
             </div>

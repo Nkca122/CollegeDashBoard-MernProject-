@@ -50,7 +50,7 @@ export default function List ({contentList = []}){
                 <div style={Styles.listItemsDiv}>
                     {contents && contents.map(
                         content => 
-                                    <ListItem heading = {content[0]} content = {content[1]}/> 
+                            <ListItem heading = {content[0]} content = {content[1]} key={uuid()}/> 
                     )}
                 </div>
             </div>

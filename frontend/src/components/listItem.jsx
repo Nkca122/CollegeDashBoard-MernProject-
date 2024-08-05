@@ -53,17 +53,19 @@ export default function ListItem({ content, heading }) {
                 justifyContent:"space-around",
                 alignItems:"center",
             //Accordion
-            maxHeight: "0",
             overflow: "hidden",
             transition: "all 0.2s linear",
             padding:"1em",
+            height:"30vh"
         },
         listItemContent: {
             backgroundColor: "#171d25",
             color: "white",
             fontSize: "0.9rem",
-            width: "90%",
             minHeight:"100%",
+            width: "90%",
+            resize:"none",
+            overflow:"auto"
         },
     }
 
@@ -75,11 +77,10 @@ export default function ListItem({ content, heading }) {
 
     useEffect(() => {
        active ? ()=>{
-            contentDivRef.current.style.maxHeight = contentDivRef.current.scrollHeight + "px"
-
+            contentDivRef.current.style.display = "block"
         }  
         : ()=>{
-            contentDivRef.current ? contentDivRef.current.style.maxHeight = null : null
+            contentDivRef.current ? contentDivRef.current.style.display = "none" : null
         }
     }, [active])
 
@@ -97,7 +98,7 @@ export default function ListItem({ content, heading }) {
             </div>
             {active &&
                 <div ref={contentDivRef} style={Styles.listItemContentDiv}>
-                        <textarea value = {content} style={Styles.listItemContent} spellCheck="false" ref={contentRef} disabled/>   
+                        <textarea value = {content} style={Styles.listItemContent} spellCheck="false" ref={contentRef} disabled/>  
 
                 </div>
             }

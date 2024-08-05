@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid'
 export default function List ({contentList = []}){
     const contents = JSON.parse(contentList).details;
     let pos = {top: 0, left: 0, x: 0, y: 0}
-    const ListRef = userRef(null)
+    const ListRef = useRef(null)
 
     const [dimensions, setDimensions] = useState({
         width: null,
@@ -14,8 +14,7 @@ export default function List ({contentList = []}){
     const Styles = {
         list:{
             width: window.innerWidth > 800 ? "50vw" : "90vw",
-            margin:"auto",
-            maxHeight : "30vh",
+            maxHeight : "40vh",
         },
         listHeadingDiv:{
             width: "100%"
@@ -31,7 +30,7 @@ export default function List ({contentList = []}){
         },
         listItemsDiv:{
             width:"30%",
-            maxHeight:"30vh",
+            maxHeight:"40vh",
             overflowY:"scroll",
             scrollbarColor:"#171d52 transparent"
         }
@@ -41,18 +40,23 @@ export default function List ({contentList = []}){
         ListRef.current.style.width = window.innerWidth > 800 ? "50vw" : "90vw";
     }
 
-    function handleResize(){
-        setDimensions({
-            width: window.innerWidth,
-            height: window.innerHeight
-        })
-    }
+    
 
-    // useEffect(()=>{
-    //     initList()
-    //         window.addEventListener("resize", handleResize);
-    //     return
-    // })
+    useEffect(()=>{
+        initList()
+        function handleResize(){
+            setDimensions({
+                width: window.innerWidth,
+                height: window.innerHeight
+            })
+        }
+            window.addEventListener("load", handleResize);
+            window.addEventListener("resize", handleResize);
+        return ()=>{
+            window.removeEventListener("load", handleResize);
+            window.removeEventListener("resize", handleResize);
+        }
+    })
    
 
     
@@ -67,7 +71,7 @@ export default function List ({contentList = []}){
                 <div style={Styles.listItemsDiv}>
                     {contents && contents.map(
                         content => 
-                            <ListItem heading = {content[0]} content = {content[1]} key={uuid()}/> 
+                            <ListItem heading = {content[0]} content = {content[1]} category={content[2]} key={uuid()}/> 
                     )}
                 </div>
             </div>

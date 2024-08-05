@@ -1,7 +1,11 @@
 import { useRef, useState, useEffect } from "react"
 import Plus from "../assets/plus"
 import Minus from "../assets/minus"
-export default function ListItem({ content, heading }) {
+import Cross from "../assets/cross"
+import Book from "../assets/book"
+import File from "../assets/file"
+import School from "../assets/school"
+export default function ListItem({ content, heading, category}) {
     let contentDivRef = useRef(null)
     let contentRef = useRef(null)
     const [active, setActive] = useState(false)
@@ -25,13 +29,13 @@ export default function ListItem({ content, heading }) {
 
         },
         listItemHeading: {
-            fontSize: "0.85rem",
+            fontSize: "0.8rem",
             userSelect: "none",
             color: "#171d25"
         },
         listItemHeadingButton: {
             backgroundColor: "transparent",
-            fontSize: "1rem",
+            fontSize: "0.8rem",
             border: "none",
             color: "#171d25"
         },
@@ -57,7 +61,7 @@ export default function ListItem({ content, heading }) {
             overflow: "hidden",
             transition: "all 0.2s linear",
             padding:"1em",
-            height:"30vh"
+            height:"40vh"
         },
         listItemContentDivHeading:{
             padding:"1em",
@@ -71,12 +75,11 @@ export default function ListItem({ content, heading }) {
         listItemContent: {
             backgroundColor: "#171d25",
             color: "white",
-            fontSize: "0.9rem",
+            fontSize: "0.8rem",
             maxHeight:"90%",
             width: "90%",
             resize:"none",
             overflow:"auto",
-            border:"1px solid white",
             padding:"1em"
         },
     }
@@ -101,7 +104,7 @@ export default function ListItem({ content, heading }) {
             <div style={Styles.listItemDiv} onClick={dropDown}>
                 <div style={Styles.listItemHeaderDiv}>
                     <h3 style={Styles.listItemHeading}>
-                        {heading.toUpperCase()}
+                        {category == 1 ? <Book/> : category == 2 ? <File/>: <School/>}
                     </h3>
                     <button style={Styles.listItemHeadingButton}>
                         {!active ? <Plus /> : <Minus />}
@@ -111,7 +114,10 @@ export default function ListItem({ content, heading }) {
             {active &&
             <>
                 <div ref={contentDivRef} style={Styles.listItemContentDiv}>
-                    <div style={Styles.listItemContentDivHeading}><button onClick={dropDown}>X</button></div>
+                    <div style={Styles.listItemContentDivHeading}>
+                        <h6>{heading.toUpperCase()}</h6>
+                        <button onClick={dropDown} style={{backgroundColor:"#171d25", color:"white", border:"none"}}><Cross/></button>
+                    </div>
                     <textarea value = {content} style={Styles.listItemContent} spellCheck="false" ref={contentRef} disabled/>  
                 </div>
             </>

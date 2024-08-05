@@ -4,7 +4,7 @@ import Graph from "./components/graph"
 function App() {
   return (
     <>
-      <div>
+      <div style={{display:"flex", width:"100vw", justifyContent:"space-around"}}>
         <Graph graphData={fakeData} xlabel={"Subjects"} ylabel={"Attendance"}  heading = {"Attendance"} minRequirement={75}/>
         <List contentList={fakeData}></List>
       </div> 

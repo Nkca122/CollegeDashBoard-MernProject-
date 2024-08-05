@@ -200,7 +200,7 @@ export default function Graph({graphData, xlabel = null, ylabel = null, minRequi
       }
 
       const resizeCanvas = (ctx) => {
-        ctx.canvas.width = window.innerWidth > 800 ? window.innerWidth * 0.5 : window.innerWidth * 0.8
+        ctx.canvas.width = window.innerWidth > 800 ? window.innerWidth * 0.4 : window.innerWidth * 0.8
         ctx.canvas.height = window.innerHeight * 0.4
       }
 

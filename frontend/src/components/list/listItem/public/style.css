@@ -1,0 +1,55 @@
+.listItemDiv {
+    height: 11.5vh;
+    width: 100%;
+    padding: 1em;
+}
+
+.listItemHeaderDiv {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width:100%;
+    height:100%;
+}
+
+.listItemHeadingButton {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-size: 1rem;
+}
+
+.listItemContentDiv {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width:80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    transition: all 0.2s linear;
+    padding: 0.5em;
+    height:40vh;
+}
+
+.listItemContentDivHeading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listItemContent{
+    font-size: 0.8rem;
+    height: 100%;
+    width: 100%;
+    resize: none;
+    overflow: auto;
+    padding: 1em;
+}
+
+
+

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import ListItem from "./listItem"
+import ListItem from "./listItem/listItem"
 import { v4 as uuid } from 'uuid'
+import './public/style.css'
 export default function List ({contentList = []}){
     const contents = JSON.parse(contentList).details;
     let pos = {top: 0, left: 0, x: 0, y: 0}
@@ -11,36 +12,10 @@ export default function List ({contentList = []}){
         height: null
     })
 
-    const Styles = {
-        list:{
-            width: window.innerWidth > 800 ? "50vw" : "90vw",
-            maxHeight : "40vh",
-        },
-        listHeadingDiv:{
-            width: "100%"
-        },
-        listHeading:{
-            display:"flex",
-            padding:"auto",
-            //Text formatting
-                fontWeight:"900",
-                fontSize:"1.2rem", 
-                color:"white",
-            userSelect:"none"
-        },
-        listItemsDiv:{
-            width:"30%",
-            maxHeight:"40vh",
-            overflowY:"scroll",
-            scrollbarColor:"#171d52 transparent"
-        }
-    }
 
     function initList(){
         ListRef.current.style.width = window.innerWidth > 800 ? "50vw" : "90vw";
     }
-
-    
 
     useEffect(()=>{
         initList()
@@ -63,12 +38,12 @@ export default function List ({contentList = []}){
 
     return (
         <>
-        <div style={Styles.list} ref={ListRef}>
-            <div style={Styles.listHeadingDiv}>
-                <h3 style={Styles.listHeading}><pre>{"Notice Board"}</pre></h3>
+        <div className = "list" ref={ListRef}>
+            <div className="listHeadingDiv">
+                <h3 className="listHeading"><pre>{"Notice Board"}</pre></h3>
             </div>
             <div style={{position:"relative"}}>
-                <div style={Styles.listItemsDiv}>
+                <div className="listItemsDiv">
                     {contents && contents.map(
                         content => 
                             <ListItem heading = {content[0]} content = {content[1]} category={content[2]} key={uuid()}/> 

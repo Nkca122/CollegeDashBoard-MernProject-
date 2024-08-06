@@ -1,10 +1,10 @@
-import fakeData from "../assets/fakeData"
-import List from "./components/list"
-import Graph from "./components/graph"
+import fakeData from "../temp/fakeData"
+import List from "./components/list/list"
+import Graph from "./components/graph/graph"
 function App() {
   return (
     <>
-      <div style={{display:"flex", width:"100vw", justifyContent:"space-around"}}>
+      <div className="container">
         <Graph graphData={fakeData} xlabel={"Subjects"} ylabel={"Attendance"}  heading = {"Attendance"} minRequirement={75}/>
         <List contentList={fakeData}></List>
       </div> 

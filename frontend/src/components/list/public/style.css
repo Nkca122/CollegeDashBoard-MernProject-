@@ -1,0 +1,22 @@
+.list {
+    height : 40vh;
+}
+
+.listHeadingDiv {
+    width : 100%;
+}
+
+.listHeading {
+    display : flex;
+    padding: auto;
+    font-weight : bolder;
+    font-size : 1.2rem;
+    user-select: none;
+}
+
+.listItemsDiv {
+    width : 30%;
+    height : 40vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

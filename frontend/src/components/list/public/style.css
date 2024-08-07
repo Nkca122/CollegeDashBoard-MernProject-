@@ -1,5 +1,7 @@
 .list {
     height : 40vh;
+    margin-top:1em;
+    margin-bottom: 1em;
 }
 
 @media screen and (width < 800px){

@@ -3,7 +3,6 @@ import ThemeDetector from "../../themeDetector/themeDetector";
 import './public/style.css'
 
 export default function BarGraph({graphData, xlabel = null, ylabel = null, minRequirement = 75}){
-    let isHovered = [false, -1];
     let subjects = JSON.parse(graphData).subjects;
     let graphBarHeights = [];
     let isGraphDrawn = false;
@@ -23,7 +22,7 @@ export default function BarGraph({graphData, xlabel = null, ylabel = null, minRe
         ctx.setLineDash([2, 2])
         ctx.save()
             ctx.translate(x0, y0)
-            ctx.moveTo(x0, -1 * minRequirement)
+            ctx.moveTo(0, -1 * minRequirement)
             ctx.lineTo(ctx.canvas.width, -1 * minRequirement)
         ctx.stroke()
         ctx.restore()
@@ -54,7 +53,7 @@ export default function BarGraph({graphData, xlabel = null, ylabel = null, minRe
                     ctx.beginPath()
                         ctx.fillStyle = minRequirement < subjects[i][1] ? isThemeDark ? "#eedfcc" : "#7a848d" : (minRequirement - 15) <= subjects[i][1] ? isThemeDark ? "#b19b84" : "#3b4a5c" : isThemeDark ? "#756b55" : "#2e3845";
                         ctx.fillRect(position, -1*graphBarHeights[i], width, graphBarHeights[i] * 1);
-                        ctx.font = "12px bold"
+                        ctx.font = "0.65rem bold"
                         ctx.save()
                         ctx.translate(position, -1*graphBarHeights[i] - (i%2 == 0 ? 20 : 25))
                         ctx.rotate(-Math.PI/4)

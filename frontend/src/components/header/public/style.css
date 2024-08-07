@@ -1,0 +1,24 @@
+.header {
+    width:100%;
+    height: 10vh;
+
+}
+
+.headerDiv {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: end;
+}
+
+.headerDivLoginPageLink {
+    height: 100%;
+    display: flex;
+    padding-left: 1em;
+    padding-right: 1em;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+

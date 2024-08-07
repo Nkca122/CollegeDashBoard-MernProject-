@@ -90,6 +90,10 @@ textarea {
   border: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Font sizes */
 
 @media (min-width:768px) {

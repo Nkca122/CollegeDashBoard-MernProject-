@@ -2,9 +2,18 @@
     height : 40vh;
 }
 
-.listHeadingDiv {
-    width : 100%;
+@media screen and (width < 800px){
+    .list {
+        width: 90vw;
+    }
 }
+
+@media screen and (width > 800px){
+    .list {
+        width: 40vw;
+    }
+}
+
 
 .listHeading {
     display : flex;

@@ -6,11 +6,29 @@
 
 .listItemHeaderDiv {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width:100%;
+    width: 100%;
     height:100%;
+    overflow-x: scroll;
+    background-color: transparent;
 }
+
+@media screen and (width < 800px) {
+    .listItemHeaderDiv {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (width > 800px){
+    .listItemHeaderDiv {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+
 
 .listItemHeadingButton {
     background-color: transparent;
@@ -19,12 +37,17 @@
     font-size: 1rem;
 }
 
+.listItemHeadingPara {
+    background-color: transparent;
+    font-size: 0.7rem;
+}
+
 .listItemContentDiv {
     position: absolute;
     top: 0;
     right: 0;
     z-index: 1;
-    width:80%;
+    width:100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -40,6 +63,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.listItemContentDivHeading h6 {
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.listItemContentDivHeading button {
+    border: none;
+}
+
+.listItemContentDivHeading button i {
+    font-size: 1rem;
+    font-weight: 900;
 }
 
 .listItemContent{

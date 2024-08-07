@@ -4,7 +4,7 @@ import Book from "./assets/book"
 import File from "./assets/file"
 import School from "./assets/school"
 import './public/style.css'
-export default function ListItem({ content, heading, category}) {
+export default function ListItem({ content, heading, category, ID_}) {
     
     let contentDivRef = useRef(null)
     let contentRef = useRef(null)
@@ -34,9 +34,12 @@ export default function ListItem({ content, heading, category}) {
                                 <Book/> : 
                                 category == 2 ? 
                                     <File/> : 
-                                        <School/>
+                                        category == 3 ?
+                                            <School/> :
+                                                null
                             }
                         </button>
+                       <p className="listItemHeadingPara">{ID_[0] + ID_[1] + ID_[2] + ID_[3]}</p>
                 </div>
             </div>
             {active &&

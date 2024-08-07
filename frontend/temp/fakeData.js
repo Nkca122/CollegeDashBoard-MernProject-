@@ -25,6 +25,17 @@ const fakeData = JSON.stringify({
         ["Maths", 25],
         ["Science", 60],
         ["Social Studies", 93],
+        ["English", 100],
+        ["Hindi", 95],
+        ["Maths", 25],
+        ["Science", 60],
+        ["Social Studies", 93], 
+        ["English", 100],
+        ["Hindi", 95],
+        ["Maths", 25],
+        ["Science", 60],
+        ["Social Studies", 93],
+        
     ]
 })
 

@@ -1,5 +1,5 @@
-import { useState } from "react";
-export default function useThemeDetector (){
+import { useEffect, useState } from "react";
+export default function ThemeDetector () {
     const getCurrentTheme = () => window.matchMedia("(prefers-color-scheme: dark)").matches;
     const [isDarkTheme, setIsDarkTheme] = useState(getCurrentTheme());  
     const mqListener = (e => {

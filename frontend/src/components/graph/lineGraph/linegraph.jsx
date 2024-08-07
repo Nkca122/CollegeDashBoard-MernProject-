@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import ThemeDetector from "../../themeDetector/themeDetector";
 export default function LineGraph({ graphData, xlabel = null, ylabel = null }) {
-    let subjects = JSON.parse(graphData).subjects;
+    let subjects = JSON.parse(graphData).semesters;
     let isThemeDark = ThemeDetector()
     const canvasRef = useRef(null)
     const CanvasDivRef = useRef(null)

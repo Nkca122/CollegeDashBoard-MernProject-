@@ -10,7 +10,7 @@ export default function DashBoard(){
                 </div> 
             <div className="container">
                 <List contentList={fakeData}></List>
-                <Graph graphData={fakeData} xlabel={"Subjects"} ylabel={"Attendance"}  heading = {"Attendance"} minRequirement={75} type="line"/>
+                <Graph graphData={fakeData} xlabel={"Semesters"} ylabel={"Percentage"}  heading = {"Attendance"} minRequirement={75} type="line"/>
             </div> 
         </>
     )

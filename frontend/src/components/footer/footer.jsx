@@ -9,7 +9,7 @@ export default function Footer(){
                         <i className="fa-brands fa-instagram"></i>
                         <i className="fa-brands fa-linkedin-in"></i>
                     </div>
-                    <div className = "f-info-brand">College Dashborad</div>
+                    <div className = "f-info-brand">College Dashboard</div>
                 </div>
             </footer>
         </>
